@@ -218,7 +218,7 @@
       "order": 13
     },
     {
-      "summary": "A Promise represents a future value: pending, fulfilled, or rejected. then handles success paths; catch handles failures; finally runs cleanup. Chaining keeps asynchronous steps readable compared with deeply nested callbacks.\n\nasync/await is syntactic sugar over Promises\u2014errors surface as thrown exceptions inside async functions. Remember: forgetting to await (or return) a Promise is a common source of \u201cit sometimes works\u201d bugs.\n\nUse Promises for I/O and timers; keep CPU-heavy work off the main thread when UI jank matters.",
+      "summary": "A Promise represents a future value: pending, fulfilled, or rejected. then handles success paths; catch handles failures; finally runs cleanup. Chaining keeps asynchronous steps readable compared with deeply nested callbacks.\n\nasync/await is syntactic sugar over Promises\u2014errors surface as thrown exceptions inside async functions. Remember: forgetting to await (or return) a Promise is a common source of \u201cit sometimes works\u201d bugs.\n\nUse Promises for I/O and timers; keep CPU-heavy work off the main thread when UI jank matters. Prefer Promise.all when independent requests can run together, and Promise.allSettled when you need every result even if some fail.",
       "source": {
         "title": "Promise - JavaScript | MDN",
         "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise",
@@ -234,7 +234,7 @@
       "order": 14
     },
     {
-      "summary": "CSS Flexible Box Layout aligns and distributes items along a main axis (row or column) with a cross axis for the other direction. Parents become flex containers; children become flex items that can grow, shrink, and wrap.\n\njustify-content and align-items handle distribution and alignment without brittle floats. Gaps, flex-grow, and flex-basis replace many old hacks for toolbars, card rows, and centering.\n\nReach for flexbox for one dimension; use grid when you need true two-dimensional page structure.",
+      "summary": "CSS Flexible Box Layout aligns and distributes items along a main axis (row or column) with a cross axis for the other direction. Parents become flex containers; children become flex items that can grow, shrink, and wrap.\n\njustify-content and align-items handle distribution and alignment without brittle floats. Gaps, flex-grow, and flex-basis replace many old hacks for toolbars, card rows, and centering.\n\nReach for flexbox for one dimension; use grid when you need true two-dimensional page structure. Inspect the flex container in DevTools first\u2014most layout bugs are wrong direction, missing flex, or unexpected shrinking.",
       "source": {
         "title": "Basic concepts of flexbox",
         "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flexible_box_layout/Basic_concepts_of_flexbox",
@@ -266,7 +266,7 @@
       "order": 16
     },
     {
-      "summary": "Effective Go collects idioms for writing clear Go: formatting with gofmt, short names in small scopes, meaningful package names, and error handling that checks and returns rather than hiding failures.\n\nGoroutines and channels are powerful concurrency tools, but the doc stresses simplicity\u2014don\u2019t reach for clever concurrency when a straight loop will do. Interfaces are satisfied implicitly; keep them small.\n\nTakeaway: readable Go is intentional Go. Let tools format; spend brainpower on names, errors, and APIs.",
+      "summary": "Effective Go collects idioms for writing clear Go: formatting with gofmt, short names in small scopes, meaningful package names, and error handling that checks and returns rather than hiding failures.\n\nGoroutines and channels are powerful concurrency tools, but the doc stresses simplicity\u2014don\u2019t reach for clever concurrency when a straight loop will do. Interfaces are satisfied implicitly; keep them small.\n\nTakeaway: readable Go is intentional Go. Let tools format; spend brainpower on names, errors, and APIs. When a function can fail, make the error obvious at the call site instead of panicking by default.",
       "source": {
         "title": "Effective Go",
         "url": "https://go.dev/doc/effective_go",
@@ -283,7 +283,7 @@
       "order": 17
     },
     {
-      "summary": "In Django, a view is a Python function (or class) that receives a web request and returns a response. URLconf routes map paths to views; templates and forms help build HTML, while JsonResponse serves APIs.\n\nKeep views thin: validate input, call model/query logic, return status and body. Fat views become hard to test\u2014push business rules into models or services.\n\nPattern: one clear job per view, explicit status codes, and reuse generic class-based views when they fit without fighting them.",
+      "summary": "In Django, a view is a Python function (or class) that receives a web request and returns a response. URLconf routes map paths to views; templates and forms help build HTML, while JsonResponse serves APIs.\n\nKeep views thin: validate input, call model/query logic, return status and body. Fat views become hard to test\u2014push business rules into models or services.\n\nPattern: one clear job per view, explicit status codes, and reuse generic class-based views when they fit without fighting them. If a class-based view needs five overrides, a function view is often clearer.",
       "source": {
         "title": "Writing views \u2014 Django documentation",
         "url": "https://docs.djangoproject.com/en/stable/topics/http/views/",
@@ -300,7 +300,7 @@
       "order": 18
     },
     {
-      "summary": "Representational State Transfer (REST) is an architectural style for networked applications, popularized for HTTP APIs. Resources are identified by URIs; representations (JSON, HTML) carry state; uniform methods (GET, POST, PUT, DELETE) express intent.\n\nGood REST practice favors stateless servers, cacheable responses, and clear status codes. Many \u201cREST APIs\u201d are really HTTP+JSON without hypermedia\u2014still useful, but know which constraints you\u2019re actually keeping.\n\nDesign tip: make safe methods safe, and don\u2019t overload GET with side effects.",
+      "summary": "Representational State Transfer (REST) is an architectural style for networked applications, popularized for HTTP APIs. Resources are identified by URIs; representations (JSON, HTML) carry state; uniform methods (GET, POST, PUT, DELETE) express intent.\n\nGood REST practice favors stateless servers, cacheable responses, and clear status codes. Many \u201cREST APIs\u201d are really HTTP+JSON without hypermedia\u2014still useful, but know which constraints you\u2019re actually keeping.\n\nDesign tip: make safe methods safe, and don\u2019t overload GET with side effects. Document error bodies the same way you document success\u2014clients need both.",
       "source": {
         "title": "REST",
         "url": "https://en.wikipedia.org/wiki/REST",
@@ -332,7 +332,7 @@
       "order": 20
     },
     {
-      "summary": "HTTP caching stores responses so later requests can skip origin work. Cache-Control, ETag, and Last-Modified tell browsers and shared caches what is fresh, what must revalidate, and what is private versus public.\n\nGood caching cuts latency and load; bad caching serves stale personalized data. Vary headers matter when the same URL returns different bodies by language or encoding.\n\nRule of thumb: cache public static assets aggressively; keep authenticated API responses private and short-lived unless you truly understand invalidation.",
+      "summary": "HTTP caching stores responses so later requests can skip origin work. Cache-Control, ETag, and Last-Modified tell browsers and shared caches what is fresh, what must revalidate, and what is private versus public.\n\nGood caching cuts latency and load; bad caching serves stale personalized data. Vary headers matter when the same URL returns different bodies by language or encoding.\n\nRule of thumb: cache public static assets aggressively; keep authenticated API responses private and short-lived unless you truly understand invalidation. When debugging \u201cwrong content,\u201d check intermediate proxies before blaming the app.",
       "source": {
         "title": "HTTP caching",
         "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching",
