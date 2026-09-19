@@ -13,6 +13,8 @@ import * as Haptics from 'expo-haptics';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { BriefCard } from '../components/BriefCard';
 import { TagFilterChips } from '../components/TagFilterChips';
+import { getInterests } from '../interests/storage';
+import { sortBriefsForYou } from '../interests/sortForYou';
 import type { Brief, Feed, TopicTag } from '../types';
 import { colors, spacing, typography } from '../theme';
 import feedData from '../data/feed.json';
@@ -25,9 +27,8 @@ export type FeedScreenProps = {
 };
 
 function filterBriefs(briefs: Brief[], selectedTags: TopicTag[]): Brief[] {
-  const sorted = [...briefs].sort((a, b) => a.order - b.order);
-  if (selectedTags.length === 0) return sorted;
-  return sorted.filter((b) =>
+  if (selectedTags.length === 0) return [...briefs];
+  return briefs.filter((b) =>
     selectedTags.some((tag) => b.tags.includes(tag)),
   );
 }
@@ -37,14 +38,27 @@ export function FeedScreen({ selectedTags, onChangeTags }: FeedScreenProps) {
   const [pageHeight, setPageHeight] = useState(0);
   const [hasSwiped, setHasSwiped] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [interestTags, setInterestTags] = useState<TopicTag[]>([]);
   const lastAnnouncedId = useRef<string | null>(null);
   const lastHapticIndex = useRef<number | null>(null);
   const listRef = useRef<FlatList<Brief>>(null);
 
-  const briefs = useMemo(
-    () => filterBriefs(feed.briefs, selectedTags),
-    [selectedTags],
-  );
+  useEffect(() => {
+    let cancelled = false;
+    getInterests().then((prefs) => {
+      if (!cancelled) setInterestTags(prefs.interest_tags);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const briefs = useMemo(() => {
+    const filtered = filterBriefs(feed.briefs, selectedTags);
+    // Topics filters = manual override; For-you sorts within the filtered set.
+    // Empty interests → order-only (sortBriefsForYou).
+    return sortBriefsForYou(filtered, interestTags);
+  }, [selectedTags, interestTags]);
 
   useEffect(() => {
     setCurrentIndex(0);
@@ -52,7 +66,7 @@ export function FeedScreen({ selectedTags, onChangeTags }: FeedScreenProps) {
     lastAnnouncedId.current = null;
     lastHapticIndex.current = null;
     listRef.current?.scrollToOffset({ offset: 0, animated: false });
-  }, [selectedTags]);
+  }, [selectedTags, interestTags]);
 
   const onLayout = useCallback((e: LayoutChangeEvent) => {
     const h = Math.round(e.nativeEvent.layout.height);

@@ -1,5 +1,6 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { PRIVACY_ONELINER } from '../constants/privacy';
 import { colors, spacing, typography } from '../theme';
 
 export type HomeScreenProps = {
@@ -48,6 +49,7 @@ export function HomeScreen({ briefCount, onStartReading }: HomeScreenProps) {
         >
           <Text style={styles.ctaText}>Start reading</Text>
         </Pressable>
+        <Text style={styles.privacyLine}>{PRIVACY_ONELINER}</Text>
         <Text style={styles.fossNote}>
           Free & open source. No accounts. No paywall.
         </Text>
@@ -119,6 +121,14 @@ const styles = StyleSheet.create({
     lineHeight: 22,
     fontWeight: '700',
     color: colors.background,
+  },
+  privacyLine: {
+    ...typography.body,
+    fontSize: 15,
+    lineHeight: 22,
+    color: colors.textMuted,
+    textAlign: 'center',
+    fontWeight: '600',
   },
   fossNote: {
     ...typography.attribution,

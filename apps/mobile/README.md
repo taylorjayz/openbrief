@@ -73,6 +73,25 @@ Run: `npx expo start` then `w` for web, or `npx expo start --web`.
 
 `src/types.ts` — `Brief`, `BriefSource`, `Feed` matching `specs/brief-schema.md`. Theme tokens: `src/theme.ts`.
 
+## Interests / For you (OB-006, no telemetry — OB-007)
+
+On-device prefs only. **No analytics SDKs or event emitters.**
+
+| File | Role |
+|------|------|
+| `src/interests/storage.ts` | `getInterests` / `setInterests` (AsyncStorage; tags validated) |
+| `src/interests/sortForYou.ts` | `sortBriefsForYou(briefs, tags)` |
+| `src/interests/index.ts` | Maya re-exports + wire-up notes |
+| `src/constants/privacy.ts` | `PRIVACY_ONELINER` (Maya places on Home) |
+| `src/screens/InterestsOnboardingStub.tsx` | Thin stub — Maya owns real onboarding |
+
+FeedScreen loads interests and applies For-you sort when tags are set; empty prefs → `order`. Topics chips remain a manual filter override.
+
+```bash
+npm run assert-interests
+npx tsc --noEmit
+```
+
 ## No accounts
 
 v0.1 has no auth / paywall.
