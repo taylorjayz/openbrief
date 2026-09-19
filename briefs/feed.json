@@ -347,6 +347,56 @@
         "reliability"
       ],
       "order": 21
+    },
+    {
+      "summary": "The Fetch API is the browser\u2019s modern way to request network resources and read responses as Promises. You pass a URL (and optional method, headers, body, credentials mode); you get a Response you can parse as JSON, text, or a stream.\n\nUnlike older XMLHttpRequest, Fetch composes cleanly with async/await and service workers. Remember: a 404 still \u201csucceeds\u201d at the network layer\u2014check response.ok or status before assuming JSON is usable. CORS still applies for cross-origin calls.\n\nHabit: centralize error handling around failed statuses and network throws, and don\u2019t treat every resolved Promise as business success.",
+      "source": {
+        "title": "Fetch API",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API",
+        "license": "CC-BY-SA-2.5+",
+        "attribution_text": "Summary based on \u201cFetch API\u201d by Mozilla Contributors (MDN), licensed under CC-BY-SA 2.5+"
+      },
+      "id": "ob-022",
+      "title": "Fetch API \u2014 modern requests in the browser",
+      "tags": [
+        "web",
+        "software"
+      ],
+      "order": 22
+    },
+    {
+      "summary": "HTTP status codes are three-digit signals on every response: 1xx informational, 2xx success, 3xx redirect, 4xx client error, 5xx server error. Reading them separates \u201cURL wrong,\u201d \u201cauth failed,\u201d \u201cnot found,\u201d and \u201cserver melted\u201d faster than staring at a blank page.\n\nCommon ones you\u2019ll live with: 200 OK, 201 Created, 301/302 redirects, 400 Bad Request, 401/403 authz, 404 Not Found, 429 rate limit, 500/502/503 server-side trouble. APIs should pick codes deliberately so clients can automate retries and user messaging.\n\nDebug tip: log method, path, and status together\u2014status alone without context lies.",
+      "source": {
+        "title": "HTTP response status codes",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Status",
+        "license": "CC-BY-SA-2.5+",
+        "attribution_text": "Summary based on \u201cHTTP response status codes\u201d by Mozilla Contributors (MDN), licensed under CC-BY-SA 2.5+"
+      },
+      "id": "ob-023",
+      "title": "HTTP status codes \u2014 what the number is trying to say",
+      "tags": [
+        "web",
+        "networks",
+        "software"
+      ],
+      "order": 23
+    },
+    {
+      "summary": "ES modules split code into files that export values and import what they need. Static import/export makes dependencies explicit and lets bundlers and browsers analyze the graph ahead of time. Each module has its own scope\u2014no accidental globals.\n\nIn browsers you load modules with type=\"module\"; in Node, \"type\": \"module\" or .mjs enables the same mental model. Circular dependencies and side-effectful imports still bite\u2014prefer exporting pure functions when you can.\n\nPractice: one clear responsibility per module, named exports for libraries, and default exports sparingly.",
+      "source": {
+        "title": "JavaScript modules",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules",
+        "license": "CC-BY-SA-2.5+",
+        "attribution_text": "Summary based on \u201cJavaScript modules\u201d by Mozilla Contributors (MDN), licensed under CC-BY-SA 2.5+"
+      },
+      "id": "ob-024",
+      "title": "JavaScript modules \u2014 import what you need",
+      "tags": [
+        "web",
+        "software",
+        "practices"
+      ],
+      "order": 24
     }
   ]
 }
