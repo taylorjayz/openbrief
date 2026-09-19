@@ -11,3 +11,10 @@ expo-env.d.ts
 .metro-health-check*
 apps/mobile/ios/
 apps/mobile/android/
+
+# Ingest worker scratch (under candidates/)
+candidates/_discover_queue.json
+candidates/_gated_queue.json
+
+__pycache__/
+*.pyc

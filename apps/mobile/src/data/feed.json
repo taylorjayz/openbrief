@@ -133,6 +133,220 @@
         "oss"
       ],
       "order": 8
+    },
+    {
+      "summary": "React nudges you to build UIs by carving a mockup into a component hierarchy that mirrors your data. Start static: props flow down, no interactivity yet. Then identify the minimal state you actually need\u2014not everything you can compute.\n\nPut state in the closest common parent of the components that read it, and pass updater functions down so children can request changes. That one-way data flow is more typing than two-way binding, but it makes bugs easier to find.\n\nHabit: dry state, compute derived lists, and don\u2019t store what you can recalculate from props or existing state.",
+      "source": {
+        "title": "Thinking in React",
+        "url": "https://react.dev/learn/thinking-in-react",
+        "license": "MIT",
+        "attribution_text": "Summary based on \u201cThinking in React\u201d (react.dev), licensed under MIT"
+      },
+      "id": "ob-009",
+      "title": "Thinking in React \u2014 components, then state",
+      "tags": [
+        "software",
+        "web",
+        "practices"
+      ],
+      "order": 9
+    },
+    {
+      "summary": "Python lists are mutable sequences with rich methods: append, pop, sort, and more. They make a natural stack (append/pop at the end). As a queue they work poorly\u2014prefer collections.deque for fast pops from the left.\n\nList comprehensions build new lists from iterables with optional filters\u2014concise and often clearer than a manual loop that mutates. Nested comprehensions can transpose matrices, though zip is usually clearer for that case.\n\nPractice tip: mutating methods return None on purpose; chain by writing new expressions, not by expecting fluent returns.",
+      "source": {
+        "title": "Data Structures \u2014 Python 3 tutorial",
+        "url": "https://docs.python.org/3/tutorial/datastructures.html",
+        "license": "PSF-2.0",
+        "attribution_text": "Summary based on Python 3 tutorial \u201cData Structures,\u201d licensed under PSF License Version 2"
+      },
+      "id": "ob-010",
+      "title": "Python lists \u2014 stacks, queues, and comprehensions",
+      "tags": [
+        "software",
+        "practices"
+      ],
+      "order": 10
+    },
+    {
+      "summary": "Kubernetes is an open platform for running containerized workloads with declarative configuration and automation. You describe the desired state; control loops continuously steer the cluster toward it\u2014restarts, rollouts, scaling, and service discovery included.\n\nIt is not a full PaaS: it won\u2019t build your app, choose your database, or mandate logging. It gives building blocks\u2014Pods, Services, Deployments\u2014and leaves policy to you. Self-healing and bin-packing help production resilience when health checks and resources are set honestly.\n\nMental model: stop thinking \u201crun this script next,\u201d start thinking \u201ckeep this many healthy replicas of this image.\u201d",
+      "source": {
+        "title": "Kubernetes Overview",
+        "url": "https://kubernetes.io/docs/concepts/overview/",
+        "license": "CC-BY-4.0",
+        "attribution_text": "Summary based on Kubernetes documentation \u201cOverview,\u201d licensed under CC BY 4.0"
+      },
+      "id": "ob-011",
+      "title": "Kubernetes \u2014 desired state for containers",
+      "tags": [
+        "systems",
+        "reliability",
+        "oss"
+      ],
+      "order": 11
+    },
+    {
+      "summary": "A SELECT retrieves rows from tables: choose columns (or *), optionally filter with WHERE, sort with ORDER BY, and dedupe with DISTINCT. Expressions and AS aliases let you shape output without changing stored data.\n\nWHERE uses Boolean logic (AND/OR/NOT) so you return only rows that match\u2014rainy San Francisco days, not the whole weather table. DISTINCT removes duplicate result rows; pair it with ORDER BY when you need a stable order.\n\nEngineering habit: * is fine for exploration; production queries usually name columns so schema changes don\u2019t surprise callers.",
+      "source": {
+        "title": "Querying a Table (PostgreSQL tutorial)",
+        "url": "https://www.postgresql.org/docs/current/tutorial-select.html",
+        "license": "PostgreSQL",
+        "attribution_text": "Summary based on PostgreSQL documentation \u201cQuerying a Table,\u201d licensed under the PostgreSQL License"
+      },
+      "id": "ob-012",
+      "title": "SQL SELECT \u2014 ask the table a precise question",
+      "tags": [
+        "software",
+        "practices"
+      ],
+      "order": 12
+    },
+    {
+      "summary": "Most Git work fits a short toolkit: init or clone, status/diff to see reality, add and commit to record intent, switch/branch for topics, merge or rebase to integrate, and pull/push to collaborate. Tags mark known points; restore undoes working-tree mistakes.\n\nSolo developers live in the first half of that list. Participants add clone, fetch/pull, push, and sometimes format-patch. Integrators learn am, revert, and careful publishing.\n\nStart fluent with status, diff, log, and commit\u2014then grow into remotes. Twenty commands beat memorizing the entire manual on day one.",
+      "source": {
+        "title": "giteveryday \u2014 Everyday Git",
+        "url": "https://git-scm.com/docs/giteveryday",
+        "license": "GPL-2.0",
+        "attribution_text": "Summary based on Git documentation \u201cgiteveryday,\u201d licensed under GPL-2.0"
+      },
+      "id": "ob-013",
+      "title": "Everyday Git \u2014 a small command set that covers most days",
+      "tags": [
+        "software",
+        "oss",
+        "practices"
+      ],
+      "order": 13
+    },
+    {
+      "summary": "A Promise represents a future value: pending, fulfilled, or rejected. then handles success paths; catch handles failures; finally runs cleanup. Chaining keeps asynchronous steps readable compared with deeply nested callbacks.\n\nasync/await is syntactic sugar over Promises\u2014errors surface as thrown exceptions inside async functions. Remember: forgetting to await (or return) a Promise is a common source of \u201cit sometimes works\u201d bugs.\n\nUse Promises for I/O and timers; keep CPU-heavy work off the main thread when UI jank matters.",
+      "source": {
+        "title": "Promise - JavaScript | MDN",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise",
+        "license": "CC-BY-SA-2.5+",
+        "attribution_text": "Summary based on \u201cPromise\u201d by Mozilla Contributors (MDN), licensed under CC-BY-SA 2.5+"
+      },
+      "id": "ob-014",
+      "title": "JavaScript Promises \u2014 async without callback soup",
+      "tags": [
+        "web",
+        "software"
+      ],
+      "order": 14
+    },
+    {
+      "summary": "CSS Flexible Box Layout aligns and distributes items along a main axis (row or column) with a cross axis for the other direction. Parents become flex containers; children become flex items that can grow, shrink, and wrap.\n\njustify-content and align-items handle distribution and alignment without brittle floats. Gaps, flex-grow, and flex-basis replace many old hacks for toolbars, card rows, and centering.\n\nReach for flexbox for one dimension; use grid when you need true two-dimensional page structure.",
+      "source": {
+        "title": "Basic concepts of flexbox",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flexible_box_layout/Basic_concepts_of_flexbox",
+        "license": "CC-BY-SA-2.5+",
+        "attribution_text": "Summary based on \u201cBasic concepts of flexbox\u201d by Mozilla Contributors (MDN), licensed under CC-BY-SA 2.5+"
+      },
+      "id": "ob-015",
+      "title": "Flexbox \u2014 one-dimensional layout that cooperates",
+      "tags": [
+        "web",
+        "software"
+      ],
+      "order": 15
+    },
+    {
+      "summary": "Rust\u2019s ownership model gives each value a single owner. When the owner goes out of scope, the value is dropped. Borrowing lets other code read or mutate temporarily under compile-time rules that prevent data races and use-after-free in safe Rust.\n\nMove semantics transfer ownership; references (& and &mut) borrow. The borrow checker rejects programs that would alias mutable state unsafely\u2014shifting many bugs from runtime to compile time.\n\nLearning tip: fight the checker less by sketching who owns data and how long borrows last before you type.",
+      "source": {
+        "title": "What is Ownership? \u2014 The Rust Programming Language",
+        "url": "https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html",
+        "license": "MIT OR Apache-2.0",
+        "attribution_text": "Summary based on The Rust Programming Language \u201cWhat is Ownership?,\u201d dual-licensed MIT OR Apache-2.0"
+      },
+      "id": "ob-016",
+      "title": "Rust ownership \u2014 memory safety without a GC pause",
+      "tags": [
+        "software",
+        "practices"
+      ],
+      "order": 16
+    },
+    {
+      "summary": "Effective Go collects idioms for writing clear Go: formatting with gofmt, short names in small scopes, meaningful package names, and error handling that checks and returns rather than hiding failures.\n\nGoroutines and channels are powerful concurrency tools, but the doc stresses simplicity\u2014don\u2019t reach for clever concurrency when a straight loop will do. Interfaces are satisfied implicitly; keep them small.\n\nTakeaway: readable Go is intentional Go. Let tools format; spend brainpower on names, errors, and APIs.",
+      "source": {
+        "title": "Effective Go",
+        "url": "https://go.dev/doc/effective_go",
+        "license": "CC-BY-4.0",
+        "attribution_text": "Summary based on \u201cEffective Go\u201d (go.dev), licensed under CC BY 4.0"
+      },
+      "id": "ob-017",
+      "title": "Effective Go \u2014 clarity over cleverness",
+      "tags": [
+        "software",
+        "practices",
+        "oss"
+      ],
+      "order": 17
+    },
+    {
+      "summary": "In Django, a view is a Python function (or class) that receives a web request and returns a response. URLconf routes map paths to views; templates and forms help build HTML, while JsonResponse serves APIs.\n\nKeep views thin: validate input, call model/query logic, return status and body. Fat views become hard to test\u2014push business rules into models or services.\n\nPattern: one clear job per view, explicit status codes, and reuse generic class-based views when they fit without fighting them.",
+      "source": {
+        "title": "Writing views \u2014 Django documentation",
+        "url": "https://docs.djangoproject.com/en/stable/topics/http/views/",
+        "license": "BSD-3-Clause",
+        "attribution_text": "Summary based on Django documentation \u201cWriting views,\u201d licensed under BSD-3-Clause"
+      },
+      "id": "ob-018",
+      "title": "Django views \u2014 request in, HTTP response out",
+      "tags": [
+        "web",
+        "software",
+        "practices"
+      ],
+      "order": 18
+    },
+    {
+      "summary": "Representational State Transfer (REST) is an architectural style for networked applications, popularized for HTTP APIs. Resources are identified by URIs; representations (JSON, HTML) carry state; uniform methods (GET, POST, PUT, DELETE) express intent.\n\nGood REST practice favors stateless servers, cacheable responses, and clear status codes. Many \u201cREST APIs\u201d are really HTTP+JSON without hypermedia\u2014still useful, but know which constraints you\u2019re actually keeping.\n\nDesign tip: make safe methods safe, and don\u2019t overload GET with side effects.",
+      "source": {
+        "title": "REST",
+        "url": "https://en.wikipedia.org/wiki/REST",
+        "license": "CC-BY-SA-4.0",
+        "attribution_text": "Summary based on Wikipedia \u201cREST,\u201d licensed under CC BY-SA 4.0"
+      },
+      "id": "ob-019",
+      "title": "REST \u2014 resources, verbs, and hypermedia ideas",
+      "tags": [
+        "web",
+        "software",
+        "practices"
+      ],
+      "order": 19
+    },
+    {
+      "summary": "Kirchhoff\u2019s current law says the sum of currents into a node equals the sum leaving it\u2014charge doesn\u2019t pile up at a junction. Kirchhoff\u2019s voltage law says the directed sum of voltages around a closed loop is zero\u2014energy conservation in the circuit.\n\nTogether with Ohm\u2019s law, they let you analyze resistor networks systematically: write equations, solve for unknowns, check that results make physical sense (no negative resistances from algebra mistakes).\n\nBench habit: if measurements disagree with KCL/KVL, suspect a wiring error or a meter in the wrong mode before blaming the theory.",
+      "source": {
+        "title": "Kirchhoff's circuit laws",
+        "url": "https://en.wikipedia.org/wiki/Kirchhoff%27s_circuit_laws",
+        "license": "CC-BY-SA-4.0",
+        "attribution_text": "Summary based on Wikipedia \u201cKirchhoff's circuit laws,\u201d licensed under CC BY-SA 4.0"
+      },
+      "id": "ob-020",
+      "title": "Kirchhoff\u2019s laws \u2014 currents and voltages must balance",
+      "tags": [
+        "electronics"
+      ],
+      "order": 20
+    },
+    {
+      "summary": "HTTP caching stores responses so later requests can skip origin work. Cache-Control, ETag, and Last-Modified tell browsers and shared caches what is fresh, what must revalidate, and what is private versus public.\n\nGood caching cuts latency and load; bad caching serves stale personalized data. Vary headers matter when the same URL returns different bodies by language or encoding.\n\nRule of thumb: cache public static assets aggressively; keep authenticated API responses private and short-lived unless you truly understand invalidation.",
+      "source": {
+        "title": "HTTP caching",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching",
+        "license": "CC-BY-SA-2.5+",
+        "attribution_text": "Summary based on \u201cHTTP caching\u201d by Mozilla Contributors (MDN), licensed under CC-BY-SA 2.5+"
+      },
+      "id": "ob-021",
+      "title": "HTTP caching \u2014 faster repeats, careful freshness",
+      "tags": [
+        "web",
+        "networks",
+        "reliability"
+      ],
+      "order": 21
     }
   ]
 }

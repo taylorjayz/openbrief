@@ -52,13 +52,22 @@ cp ../../../briefs/feed.json src/data/feed.json
 
 Metro may need a reload after sync (`r` in Expo CLI).
 
-## Maya — where to polish UI
+## App shell (native-feel polish)
+
+Simple tab state in `App.tsx` (no react-navigation): **Home | Feed | Topics**.
 
 | File | Role |
 |------|------|
-| `src/components/BriefCard.tsx` | Card layout, type, attribution chrome |
-| `src/screens/FeedScreen.tsx` | Vertical FlatList paging / snap |
+| `App.tsx` | Tab state machine + shared tag filters |
+| `src/screens/HomeScreen.tsx` | Splash / wordmark / Start reading |
+| `src/screens/FeedScreen.tsx` | Vertical snap feed + filter chips + haptics |
+| `src/screens/TopicsScreen.tsx` | Controlled tag filters |
+| `src/components/TabBar.tsx` | Bottom Home / Feed / Topics |
+| `src/components/BriefCard.tsx` | Card layout, attribution (always visible) |
+| `src/constants/tags.ts` | Controlled tags only (scale-rules) |
 | `specs/ui-feed.md` (repo) | Design notes |
+
+Run: `npx expo start` then `w` for web, or `npx expo start --web`.
 
 ## Types
 

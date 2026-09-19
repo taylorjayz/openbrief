@@ -1,0 +1,28 @@
+{
+  "candidate_id": "ob-cand-003",
+  "status": "pending",
+  "proposed": {
+    "title": "[DRAFT] JavaScript modules",
+    "summary": "[DRAFT — needs Sarah edit] This OpenBrief candidate points at “JavaScript modules” (mdn source). Engineers should open the linked page for the authoritative explanation; this stub only reserves a card slot.\n\nThe draft goal is one teachable idea: what problem the topic solves, the core mechanism in plain language, and one practical takeaway for day-to-day work (debugging, design, or operations). Replace this paragraph with an original 80–180 word summary. Do not paste the article. Keep attribution accurate and tags from the controlled list only.\n\nSource URL (link only, no full-article storage): https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules",
+    "tags": [
+      "web",
+      "software",
+      "practices"
+    ],
+    "source": {
+      "title": "JavaScript modules",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules",
+      "license": "CC-BY-SA-2.5+",
+      "attribution_text": "Summary based on “JavaScript modules” by Mozilla Contributors (MDN), licensed under CC-BY-SA-2.5+"
+    }
+  },
+  "discovery": {
+    "pool": "mdn",
+    "found_at": "2026-09-19T05:54:51Z"
+  },
+  "gate": {
+    "license_ok": true,
+    "notes": "known pool policy for developer.mozilla.org"
+  },
+  "reject_reason": null
+}

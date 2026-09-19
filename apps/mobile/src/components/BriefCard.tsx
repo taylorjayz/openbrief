@@ -8,7 +8,6 @@ import {
   Linking,
   Platform,
 } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import type { Brief } from '../types';
 import { colors, spacing, typography } from '../theme';
 
@@ -27,8 +26,6 @@ export function BriefCard({
   height,
   showSwipeHint = false,
 }: BriefCardProps) {
-  const insets = useSafeAreaInsets();
-
   const openSource = useCallback(() => {
     const url = brief.source.url;
     Linking.openURL(url).catch(() => {
@@ -38,7 +35,7 @@ export function BriefCard({
 
   return (
     <View
-      style={[styles.card, { height, paddingTop: insets.top + spacing.sm }]}
+      style={[styles.card, { height, paddingTop: spacing.md }]}
       accessibilityRole="summary"
       accessibilityLabel={`${brief.title}. Brief ${index + 1} of ${total}.`}
     >
@@ -76,7 +73,7 @@ export function BriefCard({
       <View
         style={[
           styles.footer,
-          { paddingBottom: Math.max(insets.bottom, spacing.md) + (showSwipeHint ? 28 : 0) },
+          { paddingBottom: spacing.md + (showSwipeHint ? 36 : 0) },
         ]}
       >
         <Text style={styles.attribution}>{brief.source.attribution_text}</Text>
@@ -120,9 +117,10 @@ export function BriefCard({
         </View>
 
         {showSwipeHint ? (
-          <Text style={styles.hint} accessibilityElementsHidden>
-            Swipe up for next
-          </Text>
+          <View style={styles.hintRow} accessibilityElementsHidden>
+            <Text style={styles.hintArrow}>⌃</Text>
+            <Text style={styles.hint}>Swipe up for next</Text>
+          </View>
         ) : null}
       </View>
     </View>
@@ -222,10 +220,20 @@ const styles = StyleSheet.create({
     ...typography.attribution,
     color: colors.textSubtle,
   },
+  hintRow: {
+    alignItems: 'center',
+    marginTop: spacing.sm,
+    gap: 2,
+  },
+  hintArrow: {
+    fontSize: 16,
+    lineHeight: 18,
+    color: colors.accent,
+    opacity: 0.85,
+  },
   hint: {
     ...typography.hint,
     color: colors.textSubtle,
     textAlign: 'center',
-    marginTop: spacing.xs,
   },
 });

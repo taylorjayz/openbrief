@@ -14,6 +14,8 @@ export const colors = {
   chipBg: 'rgba(45, 212, 191, 0.14)',
   chipText: '#5EEAD4',
   link: '#2DD4BF',
+  /** Soft teal wash behind home splash */
+  splashGlow: 'rgba(45, 212, 191, 0.08)',
 } as const;
 
 export const spacing = {

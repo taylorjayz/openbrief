@@ -33,3 +33,6 @@ TikTok-style **vertical feed of short article summaries** that teach engineering
 | `sources/` | Approved source list |
 | `briefs/` | Curated brief markdown + `feed.json` (summaries only) |
 | `apps/mobile/` | Expo (TypeScript) iOS + Android app — vertical feed scaffold |
+| `candidates/` | Ingest queue — pending/rejected JSON only (never auto-publish) |
+| `tools/ingest/` | Henry ingest stub: discover → gate → draft → candidates/ |
+| `specs/ingest-pipeline.md` | Pipeline stages, candidate schema, reject reasons |
