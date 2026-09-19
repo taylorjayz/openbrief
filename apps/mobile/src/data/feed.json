@@ -1,0 +1,138 @@
+{
+  "version": "0.1",
+  "briefs": [
+    {
+      "summary": "HTTP is how browsers and apps ask servers for pages, images, APIs, and more. It is a client\u2013server protocol: your user-agent (usually a browser) starts the conversation; the server answers. Messages are discrete requests and responses, not a continuous stream.\n\nUnder the hood HTTP rides a reliable transport (typically TCP, often wrapped in TLS). Proxies may cache, filter, or balance load along the way. HTTP itself is extensible via headers and is \u201cstateless\u201d at the core\u2014cookies and similar mechanisms add session context when sites need it.\n\nPractical takeaway: when something \u201cbreaks on the web,\u201d separate DNS, TLS, HTTP status, and application logic. Reading a request line, status code, and a few headers already unlocks a huge amount of debugging power.",
+      "source": {
+        "title": "Overview of HTTP",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview",
+        "license": "CC-BY-SA-2.5+",
+        "attribution_text": "Summary based on \u201cOverview of HTTP\u201d by Mozilla Contributors (MDN), licensed under CC-BY-SA 2.5+"
+      },
+      "id": "ob-001",
+      "title": "HTTP is request and response",
+      "tags": [
+        "web",
+        "software",
+        "networks"
+      ],
+      "order": 1
+    },
+    {
+      "summary": "Browsers enforce a same-origin policy so a page from one site cannot freely read another site\u2019s responses. That protects users, but it also blocks legitimate frontends that talk to APIs on another host. CORS (Cross-Origin Resource Sharing) is the server\u2019s way to opt in.\n\nWith CORS, a server advertises which origins, methods, and headers are allowed\u2014often via response headers such as Access-Control-Allow-Origin. Some requests trigger a preflight OPTIONS check before the real call. Misconfigured CORS shows up as a browser error even when curl works fine\u2014because curl is not enforcing the browser\u2019s rules.\n\nFor engineers: treat CORS as a browser security feature you configure deliberately, not a bug to \u201cturn off\u201d with wildcards in production without understanding credentialed requests.",
+      "source": {
+        "title": "Cross-Origin Resource Sharing (CORS)",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS",
+        "license": "CC-BY-SA-2.5+",
+        "attribution_text": "Summary based on \u201cCross-Origin Resource Sharing (CORS)\u201d by Mozilla Contributors (MDN), licensed under CC-BY-SA 2.5+"
+      },
+      "id": "ob-002",
+      "title": "CORS \u2014 why browsers block cross-origin fetches",
+      "tags": [
+        "web",
+        "software",
+        "practices"
+      ],
+      "order": 2
+    },
+    {
+      "summary": "Git is a distributed version-control system: every clone can hold a full history, and collaboration usually happens by sharing commits through remotes. Instead of thinking only in \u201cfile diffs,\u201d Git stores snapshots of the project tree, linked into a graph of commits.\n\nBranching is cheap: a branch name is a movable pointer to a commit. Merging combines histories; rebasing replays commits for a linear story\u2014both are tools, not moral laws. Staging lets you craft commits deliberately instead of dumping every dirty file.\n\nEngineering habit: small, reviewable commits with clear messages beat giant \u201cWIP\u201d blobs. Learn status, diff, log, and bisect early\u2014they repay themselves the first time a regression appears.",
+      "source": {
+        "title": "Git",
+        "url": "https://en.wikipedia.org/wiki/Git",
+        "license": "CC-BY-SA-4.0",
+        "attribution_text": "Summary based on Wikipedia \u201cGit,\u201d licensed under CC BY-SA 4.0"
+      },
+      "id": "ob-003",
+      "title": "Git tracks snapshots, not just diffs",
+      "tags": [
+        "software",
+        "oss",
+        "practices"
+      ],
+      "order": 3
+    },
+    {
+      "summary": "The Domain Name System (DNS) maps human-friendly names like example.com to the records systems need\u2014most famously IP addresses (A/AAAA), but also mail exchangers (MX), service locators (SRV), and text policies (TXT).\n\nResolution is hierarchical and usually recursive: your stub resolver asks a recursive resolver, which walks from root hints toward the authoritative name servers for that zone. Caching speeds the internet up and also explains \u201cit works for me\u201d when TTLs differ.\n\nWhen a service is \u201cdown,\u201d check DNS first: wrong record, expired cache, or a broken delegation can look identical to an application outage. Tools like dig make the conversation visible.",
+      "source": {
+        "title": "Domain Name System",
+        "url": "https://en.wikipedia.org/wiki/Domain_Name_System",
+        "license": "CC-BY-SA-4.0",
+        "attribution_text": "Summary based on Wikipedia \u201cDomain Name System,\u201d licensed under CC BY-SA 4.0"
+      },
+      "id": "ob-004",
+      "title": "DNS turns names into where to connect",
+      "tags": [
+        "networks",
+        "systems",
+        "web"
+      ],
+      "order": 4
+    },
+    {
+      "summary": "Load balancing distributes incoming requests or network traffic across a pool of backends so no single machine becomes the bottleneck\u2014and so you can take nodes out for maintenance without a full outage.\n\nStrategies range from simple round-robin to least-connections, hashing (sticky sessions), and health-checked pools that stop sending traffic to dead instances. Balancers can sit at L4 (IP/port) or L7 (HTTP path, headers, cookies), with different tradeoffs for visibility and performance.\n\nReliability angle: a balancer is itself a critical component\u2014pair it with health checks, capacity planning, and clear failure modes. \u201cWe added a second server\u201d only helps if traffic actually reaches it.",
+      "source": {
+        "title": "Load balancing (computing)",
+        "url": "https://en.wikipedia.org/wiki/Load_balancing_(computing)",
+        "license": "CC-BY-SA-4.0",
+        "attribution_text": "Summary based on Wikipedia \u201cLoad balancing (computing),\u201d licensed under CC BY-SA 4.0"
+      },
+      "id": "ob-005",
+      "title": "Load balancing spreads work across many servers",
+      "tags": [
+        "systems",
+        "reliability",
+        "networks"
+      ],
+      "order": 5
+    },
+    {
+      "summary": "The OSI model is a seven-layer teaching framework for how networked systems communicate: from physical signals up through links, routing, transport, and application concerns. Real stacks (like TCP/IP) do not match OSI one-for-one, but the vocabulary still helps teams debug.\n\nLower layers move bits and frames; middle layers deliver packets and end-to-end reliability; upper layers speak application protocols. When latency spikes, asking \u201cis this loss, congestion, DNS, TLS, or the app?\u201d is layer-thinking in plain clothes.\n\nUse OSI as a shared language, not as dogma. The win is isolating whether a fault is cabling, switching, IP routing, TCP behavior, or something above.",
+      "source": {
+        "title": "OSI model",
+        "url": "https://en.wikipedia.org/wiki/OSI_model",
+        "license": "CC-BY-SA-4.0",
+        "attribution_text": "Summary based on Wikipedia \u201cOSI model,\u201d licensed under CC BY-SA 4.0"
+      },
+      "id": "ob-006",
+      "title": "The OSI model \u2014 a map for talking about networks",
+      "tags": [
+        "networks",
+        "systems"
+      ],
+      "order": 6
+    },
+    {
+      "summary": "Ohm\u2019s law relates voltage (V), current (I), and resistance (R) in many conductive materials: V = I \u00d7 R. Raise resistance and, for a fixed voltage, current falls; raise voltage across a fixed resistance and current rises.\n\nThat single relationship unlocks resistor sizing, LED current limiting, and a first intuition for why thin wires heat up under high current. It is a model with limits\u2014real devices can be nonlinear\u2014but it is the right first tool on the bench.\n\nElectronics habit: before blaming a microcontroller, measure whether the power rail and series resistances make physical sense. Math first, mysteries second.",
+      "source": {
+        "title": "Ohm's law",
+        "url": "https://en.wikipedia.org/wiki/Ohm%27s_law",
+        "license": "CC-BY-SA-4.0",
+        "attribution_text": "Summary based on Wikipedia \u201cOhm's law,\u201d licensed under CC BY-SA 4.0"
+      },
+      "id": "ob-007",
+      "title": "Ohm\u2019s law \u2014 voltage, current, and resistance",
+      "tags": [
+        "electronics"
+      ],
+      "order": 7
+    },
+    {
+      "summary": "Containerization packages software with the libraries and settings it expects, then runs it in an isolated user-space environment on a shared host kernel. Compared with full virtual machines, containers are usually lighter and start faster because they do not emulate a whole guest OS.\n\nImages are layered filesystems; orchestration systems schedule many containers across machines. Isolation is strong for many workloads but is not a substitute for every security boundary\u2014kernel sharing still matters.\n\nEngineering takeaway: containers improve consistency (\u201cworks on my machine\u201d becomes \u201cworks in this image\u201d), but you still design for networking, storage, secrets, and observability on purpose.",
+      "source": {
+        "title": "Containerization (computing)",
+        "url": "https://en.wikipedia.org/wiki/Containerization_(computing)",
+        "license": "CC-BY-SA-4.0",
+        "attribution_text": "Summary based on Wikipedia \u201cContainerization (computing),\u201d licensed under CC BY-SA 4.0"
+      },
+      "id": "ob-008",
+      "title": "Containers package an app with its runtime world",
+      "tags": [
+        "systems",
+        "software",
+        "oss"
+      ],
+      "order": 8
+    }
+  ]
+}
